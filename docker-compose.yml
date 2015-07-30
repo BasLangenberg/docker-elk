@@ -1,7 +1,11 @@
-elasticsearch:
+elasticsearch_node1:
   build: elasticsearch/
   ports:
     - "9200:9200"
+elasticsearch_node2:
+  build: elasticsearch/
+  ports:
+    - "9201:9201"
 logstash:
   image: logstash:latest
   command: logstash -f /etc/logstash/conf.d/logstash.conf
