@@ -1,8 +1,8 @@
-elasticsearch_node1:
+elasticsearchnode1:
   build: elasticsearch/
   ports:
     - "9200:9200"
-elasticsearch_node2:
+elasticsearchnode2:
   build: elasticsearch/
   ports:
     - "9201:9201"
@@ -14,10 +14,12 @@ logstash:
   ports:
     - "5000:5000"
   links:
-    - elasticsearch
+    - elasticsearchnode1
+    - elasticsearchnode2
 kibana:
   build: kibana/
   ports:
     - "5601:5601"
   links:
-    - elasticsearch
+    - elasticsearchnode1
+    - elasticsearchnode2
